@@ -1,0 +1,36 @@
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="todoItem">Todo Item</label>
+                <input type="text" #todoItem class="form-control">
+            </div>
+            <button *ngIf="!isInEditMode" mat-raised-button color="primary" class="w-100">Add Todo</button>
+            <button *ngIf="isInEditMode" mat-raised-button color="accent" class="w-100">Update Todo</button>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group" *ngIf="todoArr.length > 0; else noTodo">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let todo of todoArr; trackBy :trackById">
+                    <strong>
+                        {{todo.todoItem}}
+                    </strong>
+                    <div class="example-button-container">
+                        <button class="mr-2" mat-mini-fab color="primary">
+                            <mat-icon><span class="material-symbols-outlined">
+                                edit</span>
+                            </mat-icon>
+                        </button>
+                        <button mat-mini-fab color="warn">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <ng-template #noTodo>
+                <p class="alert alert-warning p-3">No Todo's Here !!!</p>
+            </ng-template>
+        </div>
+    </div>
+</div>
