@@ -6,7 +6,7 @@
                 <label for="todoItem">Todo Item</label>
                 <input type="text" #todoItem class="form-control">
             </div>
-            <button *ngIf="!isInEditMode" mat-raised-button color="primary" class="w-100">Add Todo</button>
+            <button (click)="onAddTodo()" *ngIf="!isInEditMode" mat-raised-button color="primary" class="w-100">Add Todo</button>
             <button *ngIf="isInEditMode" mat-raised-button color="accent" class="w-100">Update Todo</button>
         </div>
         <div class="col-md-6">
@@ -21,7 +21,9 @@
                                 edit</span>
                             </mat-icon>
                         </button>
-                        <button mat-mini-fab color="warn">
+                        <button 
+                        (click)="onRemove(todo.todoId)"
+                        mat-mini-fab color="warn">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </div>
