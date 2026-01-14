@@ -7,7 +7,9 @@
                 <input type="text" #todoItem class="form-control">
             </div>
             <button *ngIf="!isInEditMode" mat-raised-button color="primary" class="w-100">Add Todo</button>
-            <button *ngIf="isInEditMode" mat-raised-button color="accent" class="w-100">Update Todo</button>
+            <button
+            (click)="onUpdate()"
+             *ngIf="isInEditMode" mat-raised-button color="accent" class="w-100">Update Todo</button>
         </div>
         <div class="col-md-6">
             <ul class="list-group" *ngIf="todoArr.length > 0; else noTodo">
@@ -16,7 +18,8 @@
                         {{todo.todoItem}}
                     </strong>
                     <div class="example-button-container">
-                        <button class="mr-2" mat-mini-fab color="primary">
+                        <button
+                        (click)="editTodo(todo)" class="mr-2" mat-mini-fab color="primary">
                             <mat-icon><span class="material-symbols-outlined">
                                 edit</span>
                             </mat-icon>
